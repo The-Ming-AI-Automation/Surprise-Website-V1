@@ -13,7 +13,7 @@
 
     audio: {
       // Use a root filename or a direct HTTPS URL ending in a playable audio file.
-      music: "music.mp3",
+      music: "Music.mp3",
       voiceMessages: {
         love: "voice-message.mp3",
         birthday: "voice-message.mp3",
