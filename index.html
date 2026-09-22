@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#070a10" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="A private surprise, made from memories." />
+  <title>A Private Surprise for Jia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <span class="private-label"><span class="lock-dot"></span> A PRIVATE GIFT</span>
+    <div class="topbar-actions">
+      <button class="icon-button" id="sound-toggle" type="button" aria-label="Toggle sound" aria-pressed="false">♪</button>
+      <div class="language-switch" aria-label="Language selector">
+        <button class="language active" data-lang="en" type="button">EN</button><span>·</span>
+        <button class="language" data-lang="bm" type="button">BM</button><span>·</span>
+        <button class="language" data-lang="zh" type="button">简</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="experience">
+    <section class="screen active" id="lock-screen" aria-labelledby="lock-title">
+      <form class="glass-panel lock-panel" id="passcode-form" novalidate>
+        <div class="envelope-icon" aria-hidden="true"><span></span></div>
+        <p class="eyebrow" data-copy="privateFor">MADE ESPECIALLY FOR JIA</p>
+        <h1 id="lock-title" data-copy="lockTitle">This surprise belongs to someone special.</h1>
+        <p class="supporting" data-copy="lockBody">Enter the four numbers that mean something to both of you.</p>
+        <div class="pin-inputs" id="pin-inputs" aria-label="Four digit passcode">
+          <input inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="one-time-code" aria-label="Passcode digit 1" />
+          <input inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Passcode digit 2" />
+          <input inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Passcode digit 3" />
+          <input inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Passcode digit 4" />
+        </div>
+        <p class="hint"><span data-copy="hintLabel">Hint:</span> <span data-copy="hintText">The day our story began</span></p>
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        <button class="primary-button" type="submit"><span data-copy="unlock">Unlock the surprise</span><span>→</span></button>
+      </form>
+    </section>
+
+    <section class="screen" id="hero-screen" aria-labelledby="hero-title">
+      <div class="content hero-content">
+        <p class="eyebrow" data-copy="heroKicker">A LITTLE MOMENT, MADE FROM US</p>
+        <h2 id="hero-title" data-copy="heroTitle">I made a little surprise for you.</h2>
+        <p class="supporting" data-copy="heroBody">Take a breath. Turn up the sound. Let the moment unfold.</p>
+        <button class="primary-button" id="enter-button" type="button"><span data-copy="enter">Enter our story</span><span>→</span></button>
+      </div>
+    </section>
+
+    <section class="screen" id="select-screen" aria-labelledby="select-title">
+      <div class="content selection-content">
+        <p class="eyebrow" data-copy="selectKicker">CHOOSE A MOMENT</p>
+        <h2 id="select-title" data-copy="selectTitle">Choose the shape of your surprise.</h2>
+        <div class="choice-grid">
+          <button class="choice active-choice" id="heart-choice" type="button"><span class="choice-symbol particle-heart-symbol">♥</span><span class="choice-name" data-copy="forLove">For Love</span><span class="choice-status" data-copy="ready">Ready</span></button>
+          <button class="choice" type="button" disabled><span class="choice-symbol">♨</span><span class="choice-name" data-copy="forBirthday">For a Birthday</span><span class="choice-status" data-copy="comingNext">Coming next</span></button>
+          <button class="choice" type="button" disabled><span class="choice-symbol">✦</span><span class="choice-name" data-copy="forDate">For a Date</span><span class="choice-status" data-copy="comingNext">Coming next</span></button>
+        </div>
+        <p class="microcopy" data-copy="chooseHint">Choose the heart to continue.</p>
+      </div>
+    </section>
+
+    <section class="screen" id="release-screen" aria-labelledby="release-title">
+      <div class="content release-content">
+        <p class="eyebrow" data-copy="releaseKicker">OUR MEMORIES, HELD TOGETHER</p>
+        <h2 id="release-title" data-copy="releaseTitle">Every light holds a piece of us.</h2>
+        <p class="supporting" data-copy="releaseBody">Move gently. When you are ready, set the memories free.</p>
+        <button class="primary-button" id="release-button" type="button"><span data-copy="release">Release the memories</span><span>✦</span></button>
+      </div>
+    </section>
+
+    <section class="screen" id="memories-screen" aria-labelledby="memories-title">
+      <div class="memory-heading"><p class="eyebrow" data-copy="memoryKicker">SIX LITTLE MOMENTS</p><h2 id="memories-title" data-copy="memoryTitle">Every piece of this leads back to you.</h2><p class="microcopy" data-copy="memoryHint">Tap a memory to bring it closer.</p></div>
+      <div class="memory-field" id="memory-field">
+        <button class="memory-card memory-1" type="button" data-title="The first hello" data-date="12.06.2022"><span class="memory-art memory-art-1"></span><span class="memory-label">The first hello</span></button>
+        <button class="memory-card memory-2" type="button" data-title="Our first movie" data-date="28.08.2022"><span class="memory-art memory-art-2"></span><span class="memory-label">Our first movie</span></button>
+        <button class="memory-card memory-3" type="button" data-title="That rainy trip" data-date="14.01.2023"><span class="memory-art memory-art-3"></span><span class="memory-label">That rainy trip</span></button>
+        <button class="memory-card memory-4" type="button" data-title="A little note" data-date="03.05.2023"><span class="memory-art memory-art-4"></span><span class="memory-label">A little note</span></button>
+        <button class="memory-card memory-5" type="button" data-title="Same sky" data-date="20.09.2024"><span class="memory-art memory-art-5"></span><span class="memory-label">Same sky</span></button>
+        <button class="memory-card memory-6" type="button" data-title="Today" data-date="22.09.2026"><span class="memory-art memory-art-6"></span><span class="memory-label">Today</span></button>
+      </div>
+      <button class="text-button finale-trigger" id="finale-button" type="button" data-copy="finaleButton">Discover the final message →</button>
+    </section>
+
+    <section class="screen" id="finale-screen" aria-labelledby="finale-title">
+      <div class="glass-panel finale-panel">
+        <p class="eyebrow" data-copy="finaleKicker">THE FINAL REVEAL</p>
+        <h2 id="finale-title" data-copy="finaleTitle">Same sky. Different days. Always us.</h2>
+        <p class="supporting" data-copy="finaleBody">Thank you for making ordinary moments feel unforgettable.</p>
+        <p class="signature">Ming <span>♥</span> Jia</p>
+        <button class="primary-button" id="replay-button" type="button"><span data-copy="replay">Replay the moment</span><span>↻</span></button>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="memory-dialog" id="memory-dialog">
+    <button class="dialog-close" id="dialog-close" type="button" aria-label="Close memory">×</button>
+    <div class="dialog-art" id="dialog-art"></div><p class="eyebrow" id="dialog-date"></p><h3 id="dialog-title"></h3><p>A small moment, but a beautiful part of our story.</p>
+  </dialog>
+  <div class="loading-screen" id="loading-screen"><span class="loading-mark">♥</span><p>Preparing your surprise</p></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
